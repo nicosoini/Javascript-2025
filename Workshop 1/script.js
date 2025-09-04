@@ -37,11 +37,22 @@ if (x > 70) {
     message = "<h2>Child</h2><p>Definitely underaged. Milk, anyone?</p>";
 }
 
-
 var arr = [];
 for(var i=0; i<15; i++) {
 arr.push(Math.random());
 
 }
 console.log(arr);
+
+var arr = [];
+
+for (var i = 0; i < 15; i++) {
+    var num = Math.floor(Math.random() * 100) + 1;
+    arr.push(num);
+    console.log("Random number " + (i + 1) + ": " + num);
+    document.write("<p><strong>Random number " + (i + 1) + ":</strong> " + num + "</p>");
+}
+
+console.log("All numbers:", arr);
+document.write("<hr><p><strong>All numbers:</strong> " + arr.join(", ") + "</p>");
 
