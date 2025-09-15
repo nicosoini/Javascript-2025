@@ -1,0 +1,28 @@
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Harjoitus 4</title>
+  </head>
+  <body>
+    <h1>Opiskelija</h1>
+    <div id="message" class="message">Ladataan...</div>
+
+    <script>
+      const isStudent = confirm("Oletko opiskelija?");
+      const messageEl = document.getElementById("message");
+
+      if (isStudent) {
+        const name = prompt("Mikä on nimesi?");
+        if (name && name.trim() !== "") {
+          messageEl.textContent = `Tervetuloa, ${name.trim()}!`;
+        } else {
+          messageEl.textContent = "Tervetuloa opiskelija";
+        }
+      } else {
+        messageEl.textContent =
+          "Valitettavasti tämä sivu on tarkoitettu vain opiskelijoille";
+      }
+    </script>
+  </body>
+</html>
