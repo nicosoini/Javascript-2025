@@ -44,41 +44,44 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function insertRow() {
-  var nimi = document.getElementById('nimi').value.trim();
-  var teht = document.getElementById('tehtava').value.trim();
-  var palk = document.getElementById('palkka').value.trim();
+let painallus = document.getElementById("Insert");
+let kentta1 = document.getElementById("nimi")
+let kentta2 = document.getElementById("tehtava")
+let kentta3 = document.getElementById("palkka")
 
-  var virheet = [];
-  if (nimi.length <= 5) virheet.push('Nimen pitää olla yli 5 merkkiä.');
-  if (teht === '') virheet.push('Tehtävä ei saa olla tyhjä.');
-  if (!/^\d+(\.\d+)?$/.test(palk) || Number(palk) <= 0) virheet.push('Palkka pitää olla numero > 0.');
+painallus.addEventListener('click', function(){
+    let teksti = kentta1.value
+    let tehtävä = kentta2.value
+    let palkka = Number(kentta3.value);
 
-  if (virheet.length > 0) {
-    alert('Korjaa:\n' + virheet.join('\n'));
-    return;
-  }
+        if (teksti.length < 5){
+            alert("Nimen tulee olla yli 5 merkkiä pitkä");
+        }
+        if(tehtävä.length === 0) {
+            alert("Tehtävä kenttä ei saa olla tyhjä");
+        }
+        if(palkka === 0){
+            alert("Arvon tulee olla yli 0");
+        }
+        if(isNaN(palkka)){
+            alert("Syötä vain numeroita kohtaan Palkka")
+        }
+});
 
-  var table = document.getElementById('data');
-  var tbody = table.tBodies[0];
-  if (!tbody) tbody = table.appendChild(document.createElement('tbody'));
+function myFunction() {
+let eka = document.querySelector('#nimi').value;
+let toka = document.querySelector('#tehtava').value;
+let kolmas = document.querySelector('#palkka').value;
 
-  var r = tbody.insertRow();
-  r.insertCell(0).textContent = nimi;
-  r.insertCell(1).textContent = teht;
-  r.insertCell(2).textContent = palk + ' €';
+    var table = document.getElementById("data");
 
-  var c4 = r.insertCell(3);
-  var btn = document.createElement('button');
-  btn.type = 'button';
-  btn.textContent = 'Poista';
-  btn.onclick = function() { this.parentNode.parentNode.remove(); };
-  c4.appendChild(btn);
+    var row = table.insertRow(1);
 
-  document.getElementById('nimi').value = '';
-  document.getElementById('tehtava').value = '';
-  document.getElementById('palkka').value = '';
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
+    cell1.innerHTML = eka;
+    cell2.innerHTML = toka;
+    cell3.innerHTML = kolmas;
 }
-
-var insertBtn = document.getElementById('Insert');
-if (insertBtn) insertBtn.onclick = insertRow;
