@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Workshop 5</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="sessionData">Session data goes here!</div>
+    <button onclick="showStoredData()">Lataa tiedot</button>
+    <h1>Workshop 5: Lomakkeet ja tiedon tallentaminen Localstorageen</h1>
+    <hr />
+    <p>Tässä työpajassa harjoitellaan lomakkeiden käsittelyä. Käytä luentomateriaalia viitteenä harjoitusten rinnalla.
+        Aloita komentojen kokeilu aina JavaScript konsolissa selaimessa. Kun saat haluamasi asiat tapahtumaan
+        konsolissa, siirrä vasta sitten koodi HTML-tiedostoon. </p>
+
+    <hr />
+    <h2>Harjoitus 1: Yhteystieto-lomake</h2>
+    <p data-line="4">Alla näet yksinkertaisen yhteydenottolomakkeen, jossa on kentät sähköpostiosoitteelle ja
+        kommenteille.</p>
+    <p data-line="6">a) Kirjoita JavaScript-koodi, joka hakee syötekenttien sisällön, kun lomakkeen
+        lähetyspainiketta klikataan. Näytä syötetyt arvot alert-ikkunassa tai konsolissa. Käytä lomakkeen
+        &lt;form>-tagissa onsubmit-kuuntelijaa.
+    </p>
+    <p data-line="8">b) Kirjoita koodiin if-lauseet, jotka tarkistavat kenttiin syötetyistä merkkijonoista alla listatut
+        asiat. Ilmoita puutteista esim. alert() -ikkunassa.
+    <ul>
+        <li>Nimi ei saa olla tyhjä</li>
+        <li>Sähköpostiosoitteen tulee olla vähintään 6 merkkiä ja alle 15 merkkiä pitkä. Sen pitää myös sisältää
+            @-merkki</li>
+        <li>Kommenttikenttä ei saa olla tyhjä, ja sen pituus saa olla enintään 150 merkkiä.</li>
+    </ul>
+    Vinkki: Katso mallia luentomatskuista. Voit hyödyntää JavaScriptin
+    <a href="http://www.w3schools.com/js/js_string_methods.asp" target="_blank">String-metodeja</a> sekä <a
+        href="https://mika-stenberg.gitbook.io/web-sovelluksia-javascriptin-avulla/4.-lomakkeiden-kaesittely/lomakkeen-tarkastaminen-html5-n-avulla"
+        target="_blank">HTML5:n attribuutteja</a> tarkistusten
+    toteuttamiseen.</p>
+    <p data-line="12">c) Lisää myös toiminnallisuus, joka estää selaimen oletustoiminnon lomakkeen lähetyksen jälkeen
+        eli lomakkeen kenttien tyhjentämisen.
+        (Vinkki: katso luentomatskut)</p>
+
+
+    <p data-line="12">d) Bonus: Jos jonkun kentän kohdalla tapahtuu virhe, korosta virheellinen kenttä esim. punaisella
+        reunalla ja anna käyttäjälle palautetta näyttämällä ilmoitus lomakkeella syötekentän vieressä olevassa &lt;span>
+        -kentässä.</p>
+    <form onsubmit="return validateForm()">
+        <div class="no-border">
+            <label>Name:<br>
+                <input type="text" name="name"><span id="name"></span>
+            </label>
+        </div>
+        <div class="no-border">
+            <label>Email address:<br>
+                <input type="text" name="email"><span id="email"></span>
+            </label>
+        </div>
+        <div class="no-border">
+            <label>
+                Comment:<br>
+            </label>
+            <textarea name="comment"></textarea><span id="comment"></span>
+        </div>
+        <br>
+        <input type="submit" value="Send">
+    </form>
+
+    <hr />
+    <h2>Harjoitus 2: Jäsenyyslaskuri</h2>
+    <p data-line="16">Alla on kuntosalin jäsenyyslaskurin lomake. Siinä on kolme kenttää: Jäsenyyden tyyppi
+        (valintalista), Vuodet
+        (syötekenttä) ja Kustannukset (syötekenttä).
+        Käyttäjä voi valita valintalistasta haluamansa jäsenyyssuunnitelman (Basic = 10€, Premium = 15€, Gold = 20€) ja
+        syöttää, kuinka monesta vuodesta hän haluaa maksaa.
+
+    </p>
+    <p data-line="20">
+    <p>Päivitä lomakkeen koodi niin, että:</p>
+    <p data-line="20">a) Kustannukset-kenttä näyttää jäsenyyden kokonaiskustannukset.
+    </p>
+    <p data-line="22">b) Jos käyttäjä valitsee maksavansa yli 2 vuotta, hän saa 20 % alennuksen. Ilmoita käyttäjälle
+        alennuksesta alert-ikkunalla tai näyttämällä teksti lomakkeen alapuolella/vieressä.
+
+    <p data-line="24">c) Jos käyttäjä maksaa 5 vuotta tai enemmän, hän saa normaalin 20 % alennuksen, ja sen lisäksi 5 €
+        yllätysalennuksen. Tiedota myös tästä käyttäjää haluamallasi tavalla.
+    <form action="#" method="post" id="theForm">
+        <fieldset>
+            <legend>Laske jäsenyytesi hinta</legend>
+            <p>Täytä tämä lomake laskeaksesi jäsenyytesi hinnan. Saat 20 % alennuksen, jos liityt jäseneksi yli
+                vuodeksi!</p>
+            <div>
+                <label for="type">Jäsenyys</label>
+                <select name="type" id="type" size="4" required>
+                    <option value="10">Basic - 10.00 &euro;</option>
+                    <option value="15">Premium - 15.00 &euro;</option>
+                    <option value="20">Gold - 20.00 &euro;</option>
+                    <option value="25">Platinum - 25.00 &euro;</option>
+                </select>
+            </div>
+            <div>
+                <label for="years">Vuosia</label>
+                <input type="number" name="years" id="years" min="1" required>
+            </div>
+            <div>
+                <label for="cost">Hinta</label>
+                <input type="text" name="cost" id="cost" disabled>
+            </div>
+            <input type="submit" value="Laske" id="submit">
+        </fieldset>
+    </form>
+
+    <p data-line="20">&nbsp;</p>
+    <hr />
+
+    <h2>Harjoitus 3: Lomakedatan tallentaminen selaimeen</h2>
+    <p>Harjoituksessa 1 luit lomakkeen tiedot JavaScriptillä. Muokkaa sovelluksta siten että tallennat lukemasi kenttien
+        tiedot selaimen localStorageen.
+        Tutki tallennettuja tietoja selaimen työkaluilla Voit myös kokeilla muokata
+        tallennettua tietoa kehittäjän työkalujen avulla. Valitse työkaluista välilehti nimeltä "Sovellus/Application".
+
+
+        <hr />
+    <div>
+        <h2>Harjoitus 4: Datan lataaminen localStoragesta</h2>
+        <p>Kun olet onnistunut tallentamaan tietoa localStorageen, on aika hyödyntää sitä.
+        <p>
+            a) Toteuta ohjelma joka lataa localStoragen tiedot sivulla olevaan div-elementtiin (id="sessionData") kun
+            nappia painetaan.
+        <p></p>
+
+        b) Lisää sivun alkuun Script-tägiin koodi, joka lataa tiedot sivulle heti kun sivu ladataan.
+
+        </p>
+        <div id="sessiondata">Session data goes here!</div>
+    </div>
+    <hr />
+    <div>
+        <h2>Pohdiskelu: Sessionstorage vs. localstorage</h2>
+        <p>Vertaa sessionStoragea ja localStoragea.
+            Mieti muutamia esimerkkejä, missä kumpaakin tulisi käyttää.
+            Kokeile vaihtaa edelliseen tehtävään localStoragen tilalle sessionStorare.
+            Katso, mitä tapahtuu, kun suljet selaimen.
+            Voit hyödyntää selaimen kehittäjätyökaluja tutkiaksesi tallennettua tietoa:
+            F12 → Application-välilehti → vasemmalta valitse LocalStorage tai SessionStorage.</p>
+    </div>
+    <hr />
+<script src="ws5.js"></script>
+</body>
+
+</html>
