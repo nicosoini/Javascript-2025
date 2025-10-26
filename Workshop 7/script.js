@@ -18,7 +18,6 @@ function loadXMLFile(url) {
     if (xhr.readyState === 4) {
       const box = document.getElementById('quotes');
       if (xhr.status === 200) {
-        // Show the XML as plain text so tags are visible
         box.style.whiteSpace = 'pre-wrap';
         box.textContent = xhr.responseText;
       } else {
@@ -36,27 +35,18 @@ function loadAndParseXML(url) {
     xhr.send();
 
     xhr.onreadystatechange = function () {
-        // Only continue when request is done
         if (xhr.readyState !== 4) return;
 
         const tableBody = document.querySelector("#tabledata tbody");
         const parser = new DOMParser();
-
-        // Try to parse XML (whether responseXML exists or not)
         const xml = xhr.responseXML || parser.parseFromString(xhr.responseText, "application/xml");
-
-        // Select <quotes> nodes
         const quotes = xml.querySelectorAll("quotes");
-
-        // Reset table header
         tableBody.innerHTML = `
             <tr>
                 <td><strong>Quote</strong></td>
                 <td><strong>Author</strong></td>
             </tr>
         `;
-
-        // Build rows
         quotes.forEach(q => {
             const quoteText = q.querySelector("quote")?.textContent?.trim() || "—";
             const authorText = q.querySelector("author")?.textContent?.trim() || "Unknown";
