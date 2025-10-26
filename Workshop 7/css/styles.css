@@ -1,0 +1,27 @@
+  #tabledata {
+    max-width: 700px;
+  }
+
+  #tabledata table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+  }
+
+  #tabledata th, #tabledata td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  #tabledata tr:first-child {
+    background-color: #000000;
+    color: white;
+  }
+
+  #tabledata tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  #tabledata td strong {
+    font-size: 1.1em;
+  }
