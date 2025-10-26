@@ -34,9 +34,6 @@ function validateForm() {
     var contact = { email: email, comment: comment };
     localStorage.setItem("contactForm", JSON.stringify(contact));
 
-
-    return true
-
 }
 
 document.getElementById("theForm").onsubmit = function (e) {
