@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Workshop 9</title>
+        <link rel="stylesheet" href="css/styles.css">
+		<style>
+            div {
+                width: 200px;
+                height: 100px;
+                border: 1px solid black;
+            }
+            table, tr, td{
+              border: 1px solid gray;
+              width: 50%;
+            }
+            img {
+                position: relative;
+                left:0px;
+            }
+        </style>
+        <script  src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Workshop 9: Using jQuery</h1><hr />
+        <p>In this exercise we will practice the use of jQuery JavaScript library. Use the lecture-material as a reference guide side by side 
+        these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use.</p>
+        <p>To make things interesting, do these exercises on the Demosite -page, which will have a more complex structure and layout.</p>
+        <h2>Exercise 1: Adding jQuery to document</h2>
+        <p>In order to get jQuery-functions available to your webpage, you need to add the jQuery library as part of your page. This can be 
+        done by adding a script tag, which will reference to jQuery online or to a local file.</p>
+        <pre>   
+        &lt;script  src=&quot;https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="crossorigin="anonymous"&gt;&lt;/script&gt;
+        </pre>
+        <p>Go Ahead and add the line above to this pages HTML-code. Then reload the page. You can make sure that jQuery is up and 
+        running by typing $ at the console. </p>
+        <hr/>
+        <h2>Exercise 2: Basic Dom Scripting</h2>
+        <p>So far, we have created JavaScript by hooking the code to a button etc. A good way to learn jQuery (and JavaScript) is to try 
+        things in the console. So open the Developer Tools (F12) and try to accomplish the following tasks. </p>
+        <p>How would you:</p>
+        <ol>
+          <li>Find a reference to all H3 -tags?</li>
+          <li>Find a reference to div with an id='contant' and replace the contents with a text of your choice else?</li>
+          <li>Find a reference to the img and replace the src attribute with some other image online?</li>
+          <li>Find the element with a class sideBarListBox and show/hide it?</li>
+          <li>Find any li element that contains the text &quot;Lorem&quot; and add css underline -attribute to them?</li>
+          <li>Find all the anchor tags within the class SideBarListBox and apply css modifications of your choice to them.</li>
+        </ol>
+        <hr/>
+        <h2>Exercise 3: Effects and animation</h2>
+        <p>See: <a href="https://api.jquery.com/category/effects/" target="_blank">https://api.jquery.com/category/effects/</a></p>
+        <p>Add the following functionality to buttons below:</p>
+        <p>
+            <input type="button" name="button" id="fadein-button" value="Fade in H1">
+            <input type="button" name="button2" id="fadeout-button" value="Fade out H1">
+            <input type="button" name="button3" id="slideup-button" value="SlideUp main contents">
+            <input type="button" name="button4" id="slidedown-button" value="SlideDown main contents">
+            <input type="button" name="button5" id="animate-button" value="Animate">
+        </p>
+        <ol>
+            <li>Fade in the main heading of the page</li>
+            <li>Fade out the main heading of the page</li>
+            <li>SlideUp the main contents of the page</li>
+            <li>SlideDown the main contents of the page</li>
+            <li>Study the animate() -function. Write an animation sequence of your own on the page</li>
+        </ol>
+        <hr/>
+        <h2>Exercise 4: Ajax</h2>
+        <ol>
+            <li>First try Ajax with console. Use load() -function to inject content from the web (ex. <a href="https://meijastiina.github.io/news_rss_topstories.xml" target="_blank">https://meijastiina.github.io/news_rss_topstories.xml</a>) into the div below.</li>
+            <li>Then write a JavaScript function, which will fire when the pulldown menu item is changed. Each selection loads a different content from web to the div below. </li>
+            <li>Change the pulldown item names accordingly as well.</li>
+        </ol>
+        <p>Select an item from the list.</p>
+        <p>
+            <select name="mySelect" id="mySelect" onchange="loadContent(this.value)">
+                <option value="https://www.iltalehti.fi/rss/uutiset.xml">Iltalehti -otsikot</option>
+                <option value="https://meijastiina.github.io/news_rss_topstories.xml">Top Stories -otsikot</option>
+                <option value="https://www.is.fi/rss/uutiset.xml">IltaSanomat -otsikot</option>
+            </select>
+        </p>
+        <div id="ajax" style="border: 1px solid black; width: 400px;">
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
